@@ -12,7 +12,9 @@ module.exports = function(manager) {
       if (this.cnx) this.shutdown();
       var host = (options.host ? options.host : '127.0.0.1:6379').split(':');
       var port = (host.length == 2) ? host[1] : '6379';
-      var db = options.database && options.database.length > 0 ? options.database : null;
+      var db = options.database && options.database.length > 0 ? 
+        options.database.substring(1) : null
+      ;
       var self = this;
       host = host[0];
       this.cnx = redis.createClient(port, host, options.params);
@@ -113,9 +115,10 @@ module.exports = function(manager) {
           remove: function(object, multi) {
           }
         };
-        console.log(name, view.views[name]);
       }
       this.scripts[namespace] = scripts;
+      result.resolve(scripts);
+      view.mapper.emit('setup', scripts);
       return result;
     }
     /** Increment the specified key **/
@@ -135,9 +138,11 @@ module.exports = function(manager) {
           }
         }
       );
+      return result;
     }
     /** Requests some data **/
     ,request: function(self, view, criteria, result) {
+      result.reject(null);
       return result;
     }
     /** Writes the specified document **/
