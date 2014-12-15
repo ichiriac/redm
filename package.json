@@ -1,0 +1,28 @@
+{
+  "name": "redm",
+  "version": "0.1.0",
+  "description": "NodeJS ODM for NoSQL, Couchbase, Redis",
+  "main": "main.js",
+  "scripts": {
+    "test": "node ./node_modules/nodm/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ichiriac/redm.git"
+  },
+  "keywords": [
+    "redis",
+    "odm",
+    "crud"
+  ],
+  "author": "Ioan CHIRIAC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ichiriac/redm/issues"
+  },
+  "homepage": "http://ichiriac.github.io/sofa-odm",
+  "dependencies": {
+    "nodm": "^0.1.10",
+    "redis": "^0.12.1"
+  }
+}
